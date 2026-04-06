@@ -1,0 +1,19 @@
+HOTEL INVOICE
+--------------------------------
+Booking ID: 91FB707D
+Customer: qwerty
+Phone: 1111111111
+Room No: 1
+Room Type: deluxe
+Check-In: 2026-03-30
+Check-Out: 2026-03-31
+Days: 1
+Room Charge: ₹3000.00
+Tax: ₹360.00
+Service Charge: ₹150.00
+Total: ₹3510.00
+Payment Method: UPI
+Payment Status: Cancelled
+--------------------------------
+Thank you for choosing Luxe Stay.
+

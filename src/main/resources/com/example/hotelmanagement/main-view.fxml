@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.Group?>
+
+
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.example.hotelmanagement.MainController">
+
+    <children>
+        <BorderPane fx:id="mainRoot" styleClass="app-root">
+
+            <left>
+                <VBox fx:id="sidebar" prefWidth="260" minWidth="260" maxWidth="260" styleClass="sidebar">
+                    <padding>
+                        <Insets top="24" right="18" bottom="24" left="18"/>
+                    </padding>
+
+                    <children>
+                        <VBox spacing="6">
+                            <children>
+                                <Label text="HOTEL MANAGEMENT" styleClass="brand-title"/>
+                                <Label fx:id="welcomeLabel" styleClass="brand-subtitle"/>
+                            </children>
+                        </VBox>
+
+                        <Region prefHeight="18"/>
+
+                        <Button fx:id="dashboardBtn" text="Dashboard" styleClass="side-button" maxWidth="Infinity" onAction="#showDashboard"/>
+                        <Button fx:id="addRoomBtn" text="Add Room" styleClass="side-button" maxWidth="Infinity" onAction="#showAddRoom"/>
+                        <Button fx:id="viewRoomsBtn" text="View Rooms" styleClass="side-button" maxWidth="Infinity" onAction="#showViewRooms"/>
+                        <Button fx:id="bookRoomBtn" text="Book Room" styleClass="side-button" maxWidth="Infinity" onAction="#showBookRoom"/>
+                        <Button fx:id="historyBtn" text="Booking History" styleClass="side-button" maxWidth="Infinity" onAction="#showBookingHistory"/>
+                        <Button fx:id="cancelBtn" text="Cancel Booking" styleClass="side-button" maxWidth="Infinity" onAction="#showCancelBooking"/>
+                        <Button fx:id="extendBtn" text="Extend Stay" styleClass="side-button" maxWidth="Infinity" onAction="#showExtendStay"/>
+                        <Button fx:id="checkoutBtn" text="Checkout" styleClass="side-button" maxWidth="Infinity" onAction="#showCheckout"/>
+                        <Button fx:id="deleteBtn" text="Delete Room" styleClass="side-button" maxWidth="Infinity" onAction="#showDeleteRoom"/>
+
+                        <Region VBox.vgrow="ALWAYS"/>
+
+                        <Button text="Logout" styleClass="logout-button" maxWidth="Infinity" onAction="#handleLogout"/>
+                    </children>
+                </VBox>
+            </left>
+
+            <center>
+                <VBox spacing="18" styleClass="main-wrapper">
+                    <padding>
+                        <Insets top="24" right="24" bottom="24" left="24"/>
+                    </padding>
+
+                    <children>
+                        <HBox alignment="CENTER_LEFT" styleClass="top-header">
+                            <children>
+                                <Label fx:id="pageTitleLabel" text="Dashboard" styleClass="page-heading"/>
+                            </children>
+                        </HBox>
+
+                        <StackPane fx:id="contentArea" VBox.vgrow="ALWAYS" styleClass="content-shell"/>
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+
+        <Group StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets top="20" right="20" bottom="0" left="0"/>
+            </StackPane.margin>
+
+            <children>
+                <HBox fx:id="toastBox"
+                      alignment="CENTER_LEFT"
+                      visible="false"
+                      managed="false"
+                      mouseTransparent="true"
+                      spacing="10"
+                      styleClass="toast-box">
+                    <children>
+                        <Label fx:id="toastIconLabel" styleClass="toast-dot"/>
+                        <Label fx:id="toastLabel" styleClass="toast-text" wrapText="true"/>
+                    </children>
+                </HBox>
+            </children>
+        </Group>
+    </children>
+</StackPane>
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.hotelmanagement.MainController"
+            fx:id="mainRoot"
+            styleClass="main-root">
+
+    <top>
+        <HBox spacing="10" styleClass="top-bar">
+            <children>
+                <Button text="Dashboard" styleClass="nav-button" onAction="#showDashboard"/>
+                <Button text="Add Room" styleClass="nav-button" onAction="#showAddRoom"/>
+                <Button text="View Rooms" styleClass="nav-button" onAction="#showViewRooms"/>
+                <Button text="Book Room" styleClass="nav-button" onAction="#showBookRoom"/>
+                <Button text="Checkout" styleClass="nav-button" onAction="#showCheckout"/>
+                <Button text="Delete" styleClass="nav-button" onAction="#showDeleteRoom"/>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <StackPane style="-fx-padding: 28;">
+            <children>
+                <StackPane fx:id="contentArea" styleClass="content-card"/>
+            </children>
+        </StackPane>
+    </center>
+</BorderPane>
+-->

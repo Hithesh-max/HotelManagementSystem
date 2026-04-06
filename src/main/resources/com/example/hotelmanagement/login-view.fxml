@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="loginRoot"
+           xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.example.hotelmanagement.LoginController"
+           styleClass="login-root">
+
+    <children>
+        <VBox maxWidth="1180" maxHeight="700" alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER"
+                      spacing="0"
+                      styleClass="login-shell"
+                      maxWidth="1080"
+                      prefHeight="620">
+
+                    <children>
+                        <!-- LEFT PANEL -->
+                        <VBox HBox.hgrow="ALWAYS"
+                              alignment="CENTER_LEFT"
+                              spacing="22"
+                              styleClass="login-left-panel">
+                            <padding>
+                                <Insets top="42" right="42" bottom="42" left="42"/>
+                            </padding>
+
+                            <children>
+                                <Label text="VOLKEN STAY"
+                                       styleClass="volken-title"/>
+
+                                <Label fx:id="typewriterLabel"
+                                       text=""
+                                       styleClass="typewriter-text"
+                                       wrapText="true"
+                                       maxWidth="500"/>
+                            </children>
+                        </VBox>
+
+                        <!-- RIGHT PANEL -->
+                        <StackPane HBox.hgrow="ALWAYS"
+                                   alignment="CENTER"
+                                   styleClass="login-right-panel">
+                            <children>
+                                <VBox alignment="CENTER"
+                                      spacing="16"
+                                      maxWidth="420"
+                                      styleClass="login-card">
+                                    <children>
+                                        <Label text="Welcome Back" styleClass="login-title"/>
+                                        <Label text="Sign in as staff or customer" styleClass="login-subtitle"/>
+
+                                        <TextField fx:id="usernameField" promptText="Username"/>
+                                        <PasswordField fx:id="passwordField" promptText="Password"/>
+
+                                        <HBox alignment="CENTER" spacing="14">
+                                            <children>
+                                                <Button text="Staff Login"
+                                                        onAction="#handleStaffLogin"
+                                                        styleClass="primary-button"/>
+                                                <Button text="Customer Login"
+                                                        onAction="#handleCustomerLogin"
+                                                        styleClass="secondary-button"/>
+                                            </children>
+                                        </HBox>
+
+                                        <Button text="Create Customer Account"
+                                                onAction="#handleCustomerSignup"
+                                                styleClass="outline-button"
+                                                maxWidth="Infinity"/>
+
+                                        <Label fx:id="messageLabel"
+                                               text=""
+                                               wrapText="true"
+                                               styleClass="message-label"/>
+
+                                        <Label text="Default staff account: admin / admin123"
+                                               styleClass="hint-label"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </StackPane>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</StackPane>
+<!--
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.example.hotelmanagement.LoginController"
+           fx:id="loginRoot"
+           styleClass="login-root">
+
+    <children>
+        <VBox alignment="CENTER" spacing="0">
+            <children>
+                <StackPane styleClass="login-glow-wrapper">
+                    <children>
+                        <VBox alignment="CENTER" spacing="18" styleClass="login-card">
+                            <children>
+                                <Label text="HOTEL MANAGEMENT SYSTEM" styleClass="title"/>
+                                <Label text="Login or create your account to continue" styleClass="subtitle"/>
+
+                                <VBox spacing="12" maxWidth="280">
+                                    <children>
+                                        <TextField fx:id="usernameField" promptText="Username"/>
+                                        <PasswordField fx:id="passwordField" promptText="Password"/>
+                                    </children>
+                                </VBox>
+
+                                <HBox alignment="CENTER" spacing="14">
+                                    <children>
+                                        <Button text="Login" onAction="#handleLogin"/>
+                                        <Button text="Signup" onAction="#handleSignup"/>
+                                    </children>
+                                </HBox>
+
+                                <Label fx:id="messageLabel" styleClass="message-label"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </StackPane>
+            </children>
+        </VBox>
+    </children>
+</StackPane>
+-->

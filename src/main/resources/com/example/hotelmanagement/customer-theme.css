@@ -1,0 +1,12 @@
+.app-root,
+.login-root {
+    -fx-background-color: linear-gradient(to bottom right, #030712, #071120 45%, #0d1b36 100%);
+}
+
+.side-button-active {
+    -fx-background-color: linear-gradient(to right, #1d4ed8, #3b82f6);
+}
+
+.progress-bar > .bar {
+    -fx-background-color: linear-gradient(to right, #2563eb, #60a5fa);
+}
