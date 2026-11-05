@@ -1,24 +1,35 @@
 # Use an OpenJDK 22 Linux base image
 FROM eclipse-temurin:22-jdk
 
-# Install virtual display (Xvfb), lightweight window manager, VNC server, and noVNC web client
-RUN apt-get update && apt-get install -y \
+# Prevent interactive prompts during package installation
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install virtual display (Xvfb), window manager (openbox), VNC server, noVNC, and JavaFX graphics dependencies
+# Note: libgl1-mesa-glx was replaced by libgl1 & libglx-mesa0 in Debian Bookworm (which caused exit code 100)
+RUN apt-get update && apt-get install -y --no-install-recommends \
     xvfb \
     x11vnc \
     openbox \
     novnc \
     websockify \
-    maven \
-    libgl1-mesa-glx \
+    libgl1 \
+    libglx-mesa0 \
+    libgl1-mesa-dri \
     libgtk-3-0 \
+    libasound2 \
+    libxtst6 \
+    libxrender1 \
     && rm -rf /var/lib/apt/lists/*
+
+# Symlink vnc.html to index.html so opening the root Render URL opens the app directly
+RUN ln -s /usr/share/novnc/vnc.html /usr/share/novnc/index.html || true
 
 WORKDIR /app
 
-# Copy Maven wrapper and POM first for dependency caching
+# Copy Maven wrapper and POM
 COPY pom.xml mvnw ./
 COPY .mvn .mvn/
-RUN chmod +x mvnw && ./mvnw dependency:go-offline -B
+RUN chmod +x mvnw
 
 # Copy source code and data files
 COPY src ./src
