@@ -49,8 +49,8 @@ COPY *.txt ./
 COPY start.sh ./start.sh
 RUN sed -i 's/\r$//' ./start.sh && chmod +x ./start.sh
 
-# Build the Java project
-RUN ./mvnw clean package -DskipTests
+# Build the Java project and pre-fetch plugins so startup is instant
+RUN ./mvnw clean package -DskipTests && ./mvnw dependency:resolve-plugins
 
 # Expose Render default port
 EXPOSE 10000

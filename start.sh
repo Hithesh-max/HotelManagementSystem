@@ -11,7 +11,7 @@ echo "=== Starting Openbox Window Manager ==="
 openbox &
 
 echo "=== Starting x11vnc on 127.0.0.1:5900 ==="
-x11vnc -display :0 -forever -shared -nopw -rfbport 5900 -listen 127.0.0.1 &
+x11vnc -display :0 -forever -shared -nopw -rfbport 5900 -listen 127.0.0.1 -nohttp &
 sleep 1
 
 echo "=== Starting noVNC Proxy on port ${PORT:-10000} ==="
