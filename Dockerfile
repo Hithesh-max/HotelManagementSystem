@@ -5,7 +5,6 @@ FROM eclipse-temurin:22-jdk
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install virtual display (Xvfb), window manager (openbox), VNC server, noVNC, and JavaFX graphics dependencies
-# Note: libgl1-mesa-glx was replaced by libgl1 & libglx-mesa0 in Debian Bookworm (which caused exit code 100)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     xvfb \
     x11vnc \
@@ -21,7 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxrender1 \
     && rm -rf /var/lib/apt/lists/*
 
-# Symlink vnc.html to index.html so opening the root Render URL opens the app directly
+# Symlink vnc.html to index.html so the root URL opens the app directly
 RUN ln -s /usr/share/novnc/vnc.html /usr/share/novnc/index.html || true
 
 WORKDIR /app
