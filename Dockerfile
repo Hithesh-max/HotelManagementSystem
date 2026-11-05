@@ -45,19 +45,15 @@ RUN chmod +x mvnw
 COPY src ./src
 COPY *.txt ./
 
+# Copy startup script
+COPY start.sh ./start.sh
+RUN sed -i 's/\r$//' ./start.sh && chmod +x ./start.sh
+
 # Build the Java project
 RUN ./mvnw clean package -DskipTests
 
 # Expose Render default port
 EXPOSE 10000
 
-# Start virtual display, window manager, VNC server, noVNC proxy, and the JavaFX app
-CMD sh -c "\
-    export DISPLAY=:99 && \
-    Xvfb :99 -screen 0 1280x800x24 & \
-    sleep 2 && \
-    openbox & \
-    x11vnc -display :99 -forever -shared -nopw -rfbport 5900 -listen localhost & \
-    /opt/novnc/utils/novnc_proxy --vnc localhost:5900 --listen 0.0.0.0:${PORT:-10000} & \
-    ./mvnw javafx:run \
-"
+# Start everything via start.sh
+CMD ["/app/start.sh"]
